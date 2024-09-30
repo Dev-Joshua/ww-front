@@ -1,3 +1,4 @@
+<!-- <app-header /> -->
 <section class="main-container">
   <div class="text-login">
     <div class="image-container">
@@ -25,27 +26,196 @@
   <div class="container-right">
     <div class="form-container">
       <p class="title">Registrarse</p>
-      <form id="formulario" class="form">
-        <input type="text" class="input" placeholder="Nombre" id="name" />
+      <form [formGroup]="formRegister" class="form">
+        <input
+          #nameInput
+          type="text"
+          class="input"
+          placeholder="Nombre"
+          formControlName="nombre"
+        />
+        <div
+          *ngIf="
+            formRegister.controls['nombre'].touched &&
+            formRegister.controls['nombre'].invalid
+          "
+        >
+          <p
+            *ngIf="formRegister.controls['nombre'].hasError('required')"
+            class="font-medium text-red text-xs mt-1 ml-1"
+          >
+            Este campo es requerido
+          </p>
+        </div>
+
         <input
           type="text"
           class="input"
           placeholder="Apellidos"
-          id="lastName"
+          formControlName="apellidos"
         />
+        <div
+          *ngIf="
+            formRegister.controls['apellidos'].touched &&
+            formRegister.controls['apellidos'].invalid
+          "
+        >
+          <p
+            *ngIf="formRegister.controls['apellidos'].hasError('required')"
+            class="font-medium text-red text-xs mt-1 ml-1"
+          >
+            Este campo es requerido
+          </p>
+        </div>
+        <input
+          type="text"
+          class="input"
+          placeholder="Numero de documento"
+          formControlName="documento_identidad"
+        />
+        <div
+          *ngIf="
+            formRegister.controls['documento_identidad'].touched &&
+            formRegister.controls['documento_identidad'].invalid
+          "
+        >
+          <p
+            *ngIf="
+              formRegister.controls['documento_identidad'].hasError('required')
+            "
+            class="font-medium text-red text-xs mt-1 ml-1"
+          >
+            Este campo es requerido
+          </p>
+        </div>
+        <input
+          type="text"
+          class="input"
+          placeholder="Ciudad"
+          formControlName="ciudad"
+        />
+        <div
+          *ngIf="
+            formRegister.controls['ciudad'].touched &&
+            formRegister.controls['ciudad'].invalid
+          "
+        >
+          <p
+            *ngIf="formRegister.controls['ciudad'].hasError('required')"
+            class="font-medium text-red text-xs mt-1 ml-1"
+          >
+            Este campo es requerido
+          </p>
+        </div>
+        <input
+          type="text"
+          class="input"
+          placeholder="Dirección de residencia"
+          formControlName="direccion"
+        />
+        <div
+          *ngIf="
+            formRegister.controls['direccion'].touched &&
+            formRegister.controls['direccion'].invalid
+          "
+        >
+          <p
+            *ngIf="formRegister.controls['direccion'].hasError('required')"
+            class="font-medium text-red text-xs mt-1 ml-1"
+          >
+            Este campo es requerido
+          </p>
+        </div>
         <input
           type="number"
           class="input"
           placeholder="Numero celular"
-          id="phoneNumber"
+          formControlName="celular"
         />
+        <div
+          *ngIf="
+            formRegister.controls['celular'].touched &&
+            formRegister.controls['celular'].invalid
+          "
+        >
+          <p
+            *ngIf="formRegister.controls['celular'].hasError('required')"
+            class="font-medium text-red font- mt-1 ml-1"
+          >
+            Este campo es requerido
+          </p>
+        </div>
         <input
           type="email"
           class="input"
           placeholder="Correo electronico"
-          id="email"
+          formControlName="email"
         />
-        <input type="password" class="input" placeholder="Contraseña" />
+        <div
+          *ngIf="
+            formRegister.controls['email'].touched &&
+            formRegister.controls['email'].invalid
+          "
+        >
+          <p
+            *ngIf="formRegister.controls['email'].hasError('required')"
+            class="font-medium text-red text-xs mt-1 ml-1"
+          >
+            Este campo es obligatorio
+          </p>
+          <p
+            *ngIf="formRegister.controls['email'].hasError('email')"
+            class="font-medium text-red text-xs mt-1 ml-1"
+          >
+            Este campo debe ser un correo electrónico
+          </p>
+        </div>
+        <div>
+          <div class="relative">
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              class="input"
+              placeholder="Contraseña"
+              formControlName="contrasena"
+            /><button
+              type="button"
+              class="p-2 absolute right-2"
+              (click)="showPassword = !showPassword"
+            >
+              <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
+            </button>
+          </div>
+          <div
+            *ngIf="
+              formRegister.controls['contrasena'].touched &&
+              formRegister.controls['contrasena'].invalid
+            "
+          >
+            <p
+              *ngIf="formRegister.controls['contrasena'].hasError('required')"
+              class="font-medium text-red text-xs mt-1 ml-1"
+            >
+              Este campo es obligatorio
+            </p>
+            <p
+              *ngIf="formRegister.controls['contrasena'].hasError('minlength')"
+              class="font-medium text-red text-xs mt-1 ml-1"
+            >
+              La contraseña debe tener al menos 6 caracteres
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <select class="form-select" formControlName="rol">
+            <option value="">Seleccionar rol</option>
+            <option value="CLIENTE">Cliente</option>
+            <option value="ENTRENADOR">Entrenador</option>
+            <option value="PASEADOR">Paseador</option>
+            <option value="CUIDADOR">Cuidador</option>
+          </select>
+        </div>
+
         <p class="page-link">
           <span class="page-link-label">¿Olvidaste tu contraseña?</span>
         </p>
@@ -53,13 +223,13 @@
           type="submit"
           class="form-btn"
           id="open-modal"
-          value="Guardar"
-          onclick="saveInfo(event)"
+          value="Continuar"
+          (click)="registrarse()"
         />
       </form>
       <p class="sign-up-label">
         ¿Ya tienes una cuenta?
-        <a href="../index.html"> Inicia sesión </a>
+        <a (click)="login()"> Inicia sesión </a>
       </p>
     </div>
   </div>

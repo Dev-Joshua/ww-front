@@ -1,3 +1,4 @@
+<!-- <app-header /> -->
 <section class="main-container">
   <div class="text-login">
     <div class="image-container">
@@ -16,14 +17,87 @@
     <div class="form-container">
       <p class="title">Iniciar Sesión</p>
       <p>Inicia sesión y accede a cualquiera de nuestros servicios</p>
-      <form class="form">
-        <input type="email" class="input" placeholder="Email" id="user" />
-        <input
-          type="password"
-          class="input"
-          placeholder="Password"
-          id="password"
-        />
+      <form [formGroup]="formLogin" class="form">
+        <div>
+          <div class="relative">
+            <input
+              #nameInput
+              type="email"
+              class="input"
+              placeholder="Ingresa tu email"
+              formControlName="email"
+            />
+            <button
+              type="button"
+              class="p-2 absolute right-2"
+              (click)="nameInput.focus()"
+            >
+              <fa-icon [icon]="faPen"></fa-icon>
+            </button>
+          </div>
+
+          <div
+            *ngIf="
+              formLogin.controls['email'].touched &&
+              formLogin.controls['email'].invalid
+            "
+          >
+            <p
+              *ngIf="formLogin.controls['email'].hasError('required')"
+              class="font-medium text-red text-xs mt-1 ml-1"
+            >
+              Este campo es obligatorio
+            </p>
+            <p
+              *ngIf="formLogin.controls['email'].hasError('email')"
+              class="font-medium text-red text-xs mt-1 ml-1"
+            >
+              Este campo debe ser un correo electrónico
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="relative">
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              class="input"
+              placeholder="Ingresa password"
+              formControlName="contrasena"
+            />
+            <button
+              type="button"
+              class="p-2 absolute right-2"
+              (click)="showPassword = !showPassword"
+            >
+              <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
+            </button>
+          </div>
+          <div
+            *ngIf="
+              formLogin.controls['contrasena'].touched &&
+              formLogin.controls['contrasena'].invalid
+            "
+          >
+            <p
+              *ngIf="formLogin.controls['contrasena'].hasError('required')"
+              class="font-medium text-red text-xs mt-1 ml-1"
+            >
+              Este campo es obligatorio
+            </p>
+            <p
+              *ngIf="formLogin.controls['contrasena'].hasError('minlength')"
+              class="font-medium text-red text-xs mt-1 ml-1"
+            >
+              La contraseña debe tener al menos 6 caracteres
+            </p>
+          </div>
+        </div>
+        <div *ngIf="status === 'failed'">
+          <p class="font-medium text-red text-xs mt-1 ml-1">
+            Credenciales invalidas
+          </p>
+        </div>
         <p class="page-link">
           <span class="page-link-label">¿Olvidaste tu contraseña?</span>
         </p>
@@ -31,14 +105,14 @@
           type="button"
           class="form-btn"
           value="Acceder"
-          onclick="login()"
+          (click)="iniciarSesion()"
           id="open-modal"
         />
       </form>
       <p class="sign-up-label">
         ¿No tienes una cuenta aun?
-        <a href="./html/register.html">
-          <span class="sign-up-link"> Registrate</span>
+        <a>
+          <span class="sign-up-link" (click)="registrarse()"> Registrate</span>
         </a>
       </p>
     </div>

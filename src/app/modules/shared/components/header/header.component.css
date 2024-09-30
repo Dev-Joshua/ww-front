@@ -17,6 +17,7 @@
     margin-right: 4em;
     .nav-list {
       display: flex;
+      gap: 30px;
       .container-search {
         display: flex;
         align-items: center;
@@ -34,9 +35,25 @@
       }
       .nav-link {
         font-size: 16px;
+        font-weight: 600;
+      }
+      .flex {
+        gap: 10px;
+        align-items: center;
+        .profile {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          margin-right: 5px;
+          p {
+            font-size: 16px;
+            font-weight: 600;
+            color: aliceblue;
+          }
+        }
       }
     }
-    .buttons-insite {
+    /* .buttons-insite {
       margin-left: 3em;
       button {
         margin-left: 5px;
@@ -58,6 +75,6 @@
           font-size: 15px;
         }
       }
-    }
+    } */
   }
 }

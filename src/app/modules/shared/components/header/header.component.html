@@ -1,45 +1,75 @@
-<nav class="navbar navbar-expand-lg">
-  <div class="navbar-logo">
-    <a href="#"><img src="/assets/images/logoWW2.png" alt="logo-icon" /></a>
-  </div>
-
-  <div class="container-sections">
-    <div class="nav-list">
-      <div class="container-search">
-        <form class="d-flex" role="search">
-          <button type="submit">
-            <img
-              class="icon-search"
-              src="/assets/icons/search.svg"
-              alt="icon-search-image"
-            />
-          </button>
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Buscar match"
-            aria-label="Search"
-          />
-        </form>
-      </div>
-
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Servicios</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true"
-            >Convertirse en WoofWorkout</a
-          >
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="#">Ayuda</a>
-        </li>
-      </ul>
+<ng-container *ngIf="usuario$ | async as usuario">
+  <nav class="navbar navbar-expand-lg">
+    <div class="navbar-logo">
+      <a href="#"><img src="/assets/images/logoWW2.png" alt="logo-icon" /></a>
     </div>
 
-    <div class="buttons-insite">
+    <div class="container-sections">
+      <div class="nav-list">
+        <div class="container-search">
+          <form class="d-flex" role="search">
+            <button type="submit">
+              <img
+                class="icon-search"
+                src="/assets/icons/search.svg"
+                alt="icon-search-image"
+              />
+            </button>
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Buscar match"
+              aria-label="Search"
+            />
+          </form>
+        </div>
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Servicios</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Nosotros</a>
+          </li>
+        </ul>
+
+        <div class="flex items-center">
+          <div class="flex space-x-2">
+            <button class="text-white" type="button">
+              <fa-icon [icon]="faBell"></fa-icon>
+            </button>
+            <!-- <button class="text-white" type="button">
+              <fa-icon [icon]="faInfoCircle"></fa-icon>
+            </button> -->
+          </div>
+          <div class="profile">
+            <p>{{ usuario?.email }}</p>
+            <button
+              type="button"
+              class="flex rounded-full"
+              aria-expanded="false"
+              type="button"
+              (click)="isOpen = !isOpen"
+              cdkOverlayOrigin
+              #menuOverlay="cdkOverlayOrigin"
+            >
+              <img
+                style="object-fit: cover"
+                class="w-8 h-8 rounded-full"
+                [src]="usuario?.foto_usuario"
+                alt="user photo"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="buttons-insite">
       <button class="btn btn-light">
         <a
           routerLink="/register"
@@ -56,6 +86,75 @@
           >Iniciar sesión</a
         >
       </button>
+    </div> -->
+  </nav>
+
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="menuOverlay"
+    [cdkConnectedOverlayOpen]="isOpen"
+  >
+    <div
+      class="z-50 my-4 w-60 text-base list-none bg-white rounded divide-y divide-div shadow"
+    >
+      <div class="py-2 px-4 text-center relative">
+        <span class="block text-normal text-text">Account</span>
+        <button
+          (click)="isOpen = !isOpen"
+          class="block text-sm text-text absolute right-3 top-3"
+        >
+          <fa-icon [icon]="faClose"></fa-icon>
+        </button>
+      </div>
+      <div class="py-3 px-4 flex items-center space-x-4">
+        <img
+          style="object-fit: cover"
+          class="w-10 h-10 rounded-full"
+          [src]="usuario?.foto_usuario"
+          alt=""
+        />
+        <div class="space-y-1">
+          <div class="text-text">{{ usuario?.nombre }}</div>
+          <div class="text-sm text-gray">{{ usuario?.email }}</div>
+        </div>
+      </div>
+      <ul class="py-1">
+        <li>
+          <a
+            routerLink="/app/profile"
+            class="block py-2 px-4 text-sm text-text hover:bg-gray-100 dark:hover:bg-gray-600"
+            >Editar Perfil</a
+          >
+        </li>
+        <li>
+          <a
+            class="block py-2 px-4 text-sm text-tex hover:bg-gray-100 dark:hover:bg-gray-600"
+            >Solicitudes</a
+          >
+        </li>
+        <!-- <li>
+          <a
+            class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+            ></a
+          >
+        </li>
+        <li>
+          <a
+            class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >Settings</a
+          >
+        </li> -->
+      </ul>
+      <ul class="py-1">
+        <li>
+          <button
+            class="block py-2 px-4 text-sm text-gray-700"
+            (click)="logout()"
+          >
+            Log out
+          </button>
+        </li>
+      </ul>
     </div>
-  </div>
-</nav>
+  </ng-template>
+</ng-container>
