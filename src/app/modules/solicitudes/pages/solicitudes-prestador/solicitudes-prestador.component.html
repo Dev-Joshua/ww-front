@@ -1,0 +1,85 @@
+<div class="w-full h-full grow bg-white-600 p-6">
+  <div class="container mx-auto" *ngIf="hasSolicitudes(); else loading">
+    <table
+      class="w-full text-sm text-left text-gray"
+      cdk-table
+      [dataSource]="dataSource"
+    >
+      <tr
+        cdk-header-row
+        class="text-xs text-gray-700 uppercase bg-gray-50"
+        *cdkHeaderRowDef="columns"
+      ></tr>
+      <tr
+        cdk-row
+        class="bg-white border-b"
+        [ngClass]="{ 'bg-red-200': row.price < 100 }"
+        q
+        *cdkRowDef="let row; columns: columns"
+      ></tr>
+
+      <!-- Id Column -->
+      <ng-container cdkColumnDef="id_solicitud">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>#Id</th>
+        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          {{ row.id }}
+        </td>
+      </ng-container>
+
+      <!-- Avatar Column -->
+      <ng-container cdkColumnDef="fecha_solicitud">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Fecha</th>
+        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          {{ row.fechaSolicitud | date : "short" }}
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container cdkColumnDef="servicio">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Servicio</th>
+        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          {{ row.servicioNombre || "Sin servicio asingado" }}
+        </td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container cdkColumnDef="mascota">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Mascota</th>
+        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          {{ row.mascotaNombre || "Sin mascota asignadaa" }}
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="estado">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Estado</th>
+        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          {{ row.estado }}
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="usuario">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Usuario</th>
+        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          {{ row.clienteNombre }}
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="prestador">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Prestador</th>
+        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          {{ row.prestadorNombre }}
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="acciones">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Acciones</th>
+        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          <app-cambiar-estado [solicitud]="row"></app-cambiar-estado>
+        </td>
+      </ng-container>
+    </table>
+  </div>
+  <ng-template #loading>
+    <p>Cargando solicitudes...</p>
+  </ng-template>
+</div>

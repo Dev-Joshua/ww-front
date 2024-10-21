@@ -70,7 +70,6 @@ export class RegisterFormComponent {
         next: (data) => {
           this.status = 'success';
           if (data.token) {
-            localStorage.setItem('token', data.token);
             this.router.navigate(['/app/home']);
           }
         },

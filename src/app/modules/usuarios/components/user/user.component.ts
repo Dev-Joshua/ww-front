@@ -11,15 +11,7 @@ import { Usuario } from '../../../shared/models/usuario.model';
 })
 export class UserComponent {
   @Input({ required: true }) usuario!: Usuario;
-
   @Output() requestUserService = new EventEmitter();
-
-  addToRequestHandler() {
-    console.log('click from child');
-    this.requestUserService.emit(
-      'Mensaje desde el hijo' + ' ' + this.usuario.nombre
-    );
-  }
   public disabled = true;
 
   public toggleDisabled(): void {

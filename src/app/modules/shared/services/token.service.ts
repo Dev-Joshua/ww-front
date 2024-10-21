@@ -64,4 +64,19 @@ export class TokenService {
     }
     return false;
   }
+
+  getUserIdFromToken(): number | null {
+    const token = this.getToken();
+    if (!token) {
+      return null;
+    }
+
+    try {
+      const decodedToken = jwtDecode<any>(token);
+      return decodedToken?.userId; // Aquí `sub` es donde típicamente está el ID del usuario
+    } catch (error) {
+      console.error('Error decodificando el token:', error);
+      return null;
+    }
+  }
 }

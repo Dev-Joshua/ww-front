@@ -9,6 +9,8 @@ module.exports = {
       gray: "#969696",
       text: "#595959",
       div: "#e0e0e0",
+      white: "#ffffff",
+      indigo: "#003488",
     },
     extend: {},
   },

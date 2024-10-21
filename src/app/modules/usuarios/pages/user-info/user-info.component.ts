@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Usuario } from '../../../shared/models/usuario.model';
 import {
@@ -11,6 +11,8 @@ import { UsuarioService } from '../../../shared/services/usuario.service';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Router } from '@angular/router';
+import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-user-info',
@@ -20,13 +22,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ReactiveFormsModule,
     HeaderComponent,
     FontAwesomeModule,
+    FontAwesomeModule,
   ],
   templateUrl: './user-info.component.html',
   styleUrl: './user-info.component.css',
 })
 export class UserProfileComponent implements OnInit {
+  private router = inject(Router);
   userProfileForm: FormGroup;
   user: Usuario | null = null;
+  faClose = faClose;
 
   public disabled = true;
 
@@ -36,6 +41,7 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private userService: UsuarioService, private fb: FormBuilder) {
     this.userProfileForm = this.fb.group({
+      foto_usuario: ['', Validators.required],
       nombre: ['', Validators.required],
       apellidos: ['', Validators.required],
       documento_identidad: ['', Validators.required],
@@ -110,20 +116,8 @@ export class UserProfileComponent implements OnInit {
       });
     }
   }
+
+  goToHome() {
+    this.router.navigate(['/app/home']);
+  }
 }
-
-// export class UserInfoComponent {
-//   data = new BehaviorSubject<Usuario[]>([]);
-//   originalData: Usuario[] = [];
-
-//   connect(): Observable<Usuario[]> {
-//     return this.data;
-//   }
-
-//   init(data: Usuario[]) {
-//     this.originalData = data;
-//     this.data.next(data);
-//   }
-
-//   disconnect() {}
-// }

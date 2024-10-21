@@ -35,4 +35,10 @@ export class UsuarioService {
       user
     );
   }
+
+  filtrarPrestadores(query: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/usuarios/prestadores/filtrar`, {
+      params: { q: query },
+    });
+  }
 }

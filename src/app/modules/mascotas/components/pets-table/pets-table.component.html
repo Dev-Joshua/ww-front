@@ -1,0 +1,125 @@
+<div class="w-full h-full grow bg-white-600 p-6">
+  <div class="container mx-auto">
+    <table
+      class="w-full text-sm text-left text-gray"
+      cdk-table
+      [dataSource]="dataSource"
+    >
+      <tr
+        cdk-header-row
+        class="text-xs text-gray-700 uppercase bg-gray-50"
+        *cdkHeaderRowDef="columns"
+      ></tr>
+      <tr
+        cdk-row
+        class="bg-white border-b"
+        [ngClass]="{ 'bg-red-200': row.price < 100 }"
+        q
+        *cdkRowDef="let row; columns: columns"
+      ></tr>
+
+      <!-- Id Column -->
+      <ng-container cdkColumnDef="id_mascota">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>#Id</th>
+        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          {{ row.id_mascota }}
+        </td>
+      </ng-container>
+
+      <!-- Avatar Column -->
+      <ng-container cdkColumnDef="foto_mascota">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Avatar</th>
+        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          <img
+            style="object-fit: cover"
+            class="w-14 h-14 rounded-full"
+            [src]="row.foto_mascota"
+            alt="avatar"
+          />
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container cdkColumnDef="tipo_mascota">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Tipo</th>
+        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          {{ row.tipo_mascota }}
+        </td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container cdkColumnDef="nombre">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Nombre</th>
+        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          {{ row.nombre }}
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="edad">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Edad</th>
+        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          {{ row.edad }}
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="raza">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Raza</th>
+        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          {{ row.raza }}
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="peso">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Peso</th>
+        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          {{ row.peso }}
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="tamano">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Tamaño</th>
+        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          {{ row.tamano }}
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="sexo">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Sexo</th>
+        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          {{ row.sexo }}
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="esterilizado">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>
+          Esterilizado
+        </th>
+        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          {{ row.esterilizado }}
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="actions">
+        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Acciones</th>
+        <td
+          cdk-cell
+          class="py-4 px-6"
+          *cdkCellDef="let row"
+          style="white-space: nowrap"
+        >
+          <a
+            style="margin: 0 10px"
+            class="btn btn-primary btn-sm"
+            (click)="editMascota(row.id_mascota)"
+            >Editar</a
+          >
+          <a
+            class="btn btn-danger btn-sm"
+            (click)="confirmDelete(row.id_mascota)"
+            >Eliminar</a
+          >
+        </td>
+      </ng-container>
+    </table>
+  </div>
+</div>

@@ -59,4 +59,9 @@ export class AuthService {
         })
       );
   }
+
+  getUserRole(): string | null {
+    const usuario = this.getDataUser();
+    return usuario ? usuario.rol : null;
+  }
 }

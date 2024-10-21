@@ -6,24 +6,6 @@
 
     <div class="container-sections">
       <div class="nav-list">
-        <div class="container-search">
-          <form class="d-flex" role="search">
-            <button type="submit">
-              <img
-                class="icon-search"
-                src="/assets/icons/search.svg"
-                alt="icon-search-image"
-              />
-            </button>
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Buscar match"
-              aria-label="Search"
-            />
-          </form>
-        </div>
-
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="#">Home</a>
@@ -68,25 +50,6 @@
         </div>
       </div>
     </div>
-
-    <!-- <div class="buttons-insite">
-      <button class="btn btn-light">
-        <a
-          routerLink="/register"
-          routerLinkActive="underline"
-          class="block hover:underline"
-          >Registrarse</a
-        >
-      </button>
-      <button class="btn btn-dark">
-        <a
-          routerLink="/login"
-          routerLinkActive="underline"
-          class="block hover:underline"
-          >Iniciar sesión</a
-        >
-      </button>
-    </div> -->
   </nav>
 
   <ng-template
@@ -121,21 +84,26 @@
       <ul class="py-1">
         <li>
           <a
-            routerLink="/app/profile"
+            style="cursor: pointer"
+            (click)="goToProfile()"
             class="block py-2 px-4 text-sm text-text hover:bg-gray-100 dark:hover:bg-gray-600"
             >Editar Perfil</a
           >
         </li>
         <li>
           <a
+            style="cursor: pointer"
+            (click)="goToSolicitudes()"
             class="block py-2 px-4 text-sm text-tex hover:bg-gray-100 dark:hover:bg-gray-600"
             >Solicitudes</a
           >
         </li>
-        <!-- <li>
+        <li>
           <a
+            style="cursor: pointer"
+            (click)="goToMascotas()"
             class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
-            ></a
+            >Tus mascotas</a
           >
         </li>
         <li>
@@ -143,7 +111,7 @@
             class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
             >Settings</a
           >
-        </li> -->
+        </li>
       </ul>
       <ul class="py-1">
         <li>

@@ -1,0 +1,46 @@
+<div>
+  <button
+    (click)="goToHome()"
+    class="block text-sm text-text absolute top-30 right-16"
+  >
+    <fa-icon style="font-size: 22px" [icon]="faClose"></fa-icon>
+  </button>
+  <div
+    class="card"
+    style="
+      width: 450px;
+      margin: 2em 0 1em 6em;
+      padding: 20px;
+      align-items: center;
+    "
+  >
+    <div
+      style="display: flex; flex-direction: column; gap: 10px"
+      class="card-body"
+    >
+      <h5
+        style="font-size: 25px; font-weight: bold"
+        class="text-center mb-1 mt-1"
+      >
+        Añadir mascota
+      </h5>
+      <div style="display: flex; justify-content: center">
+        <button (click)="registerPet()">
+          <img
+            style="width: 90px"
+            src="../assets/icons/boton-agregar.png"
+            alt=""
+          />
+        </button>
+      </div>
+      <p
+        style="text-align: center"
+        class="block text-sm font-sans leading-6 text-nav"
+      >
+        Tienes un nuevo miembro en tu familia de peluditos, registralo para que
+        pueda disfrutar de nuestros servicios
+      </p>
+    </div>
+  </div>
+  <app-pets-table />
+</div>

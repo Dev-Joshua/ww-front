@@ -1,0 +1,32 @@
+<div class="container">
+  <h2>Solicitar Servicio</h2>
+
+  <form [formGroup]="solicitudForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="mascota">Selecciona tu mascota:</label>
+      <select formControlName="mascota_id" class="form-control" required>
+        <option *ngFor="let mascota of mascotas" [value]="mascota.id_mascota">
+          {{ mascota.nombre }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="fecha">Selecciona la fecha y hora:</label>
+      <input
+        type="datetime-local"
+        formControlName="fecha_solicitud"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!solicitudForm.valid"
+    >
+      Solicitar Servicio
+    </button>
+  </form>
+</div>

@@ -1,0 +1,119 @@
+<section>
+  <!-- filtro-prestadores.component.html -->
+  <div class="container flex justify-center my-4">
+    <form class="w-96" (submit)="buscarPrestadores()">
+      <div class="form-group">
+        <label for="ciudad">Ciudad</label>
+        <input
+          type="text"
+          [(ngModel)]="ciudad"
+          name="ciudad"
+          class="form-control"
+          placeholder="Buscar por ciudad"
+        />
+      </div>
+      <div class="form-group">
+        <label for="servicio">Servicio</label>
+        <select [(ngModel)]="servicioId" name="servicio" class="form-control">
+          <option value="">Seleccionar Servicio</option>
+          <option
+            *ngFor="let servicio of servicios"
+            [value]="servicio.id_servicio"
+          >
+            {{ servicio.nombre_servicio }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input
+          type="text"
+          [(ngModel)]="nombre"
+          name="nombre"
+          class="form-control"
+          placeholder="Buscar por nombre"
+        />
+      </div>
+      <div style="display: flex; justify-content: center">
+        <button
+          class="my-3 w-80 items-center px-4 py-2 text-sm font-medium text-center text-white bg-nav rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          type="submit"
+        >
+          Buscar
+        </button>
+      </div>
+    </form>
+  </div>
+  <!-- Resultados de la búsqueda -->
+
+  <div class="container">
+    <h3>Resultados de la búsqueda</h3>
+    <div
+      class="grid grid-cols-4 ml-14 mr-14 gap-8 mt-16"
+      *ngIf="prestadores.length > 0"
+    >
+      <div
+        *ngFor="let prestador of prestadores"
+        class="w-full pt-4 pb-0 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray"
+      >
+        <div class="flex flex-col items-center pb-10">
+          <img
+            class="w-24 h-24 mb-3 rounded-full shadow-lg"
+            [src]="prestador.foto_usuario"
+            alt="image"
+          />
+          <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-black">
+            {{ prestador.nombre }} {{ prestador.apellidos }}
+          </h5>
+          <div class="calification">
+            <svg
+              class="w-5 h-5 text-gray-800 dark:text-star"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z"
+              />
+            </svg>
+            <span class="text-sm text-gray-500 dark:text-gray-400"> 4.5</span>
+          </div>
+          <div class="content">
+            <span class="text-sm text-gray-500 dark:text-gray-400">{{
+              prestador.ciudad
+            }}</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400">{{
+              prestador.email
+            }}</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400">{{
+              prestador.celular
+            }}</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400">{{
+              prestador.direccion
+            }}</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400">{{
+              prestador.rol
+            }}</span>
+          </div>
+          <div class="flex mt-4 md:mt-6">
+            <button
+              (click)="solicitarServicio(prestador.id_usuario, servicioId)"
+              class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-nav rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Solicitar servicio
+            </button>
+            <button
+              [disabled]="disabled"
+              class="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray"
+            >
+              Message
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,243 @@
+<div class="container">
+  <div
+    class="col-md-6 mx-auto p-4 m-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray"
+  >
+    <h2
+      style="font-size: 25px; font-weight: bold"
+      class="text-center mb-5 mt-5"
+    >
+      Editar Macota
+    </h2>
+
+    <form [formGroup]="petProfileForm" class="form" (ngSubmit)="onSubmit()">
+      <div class="space-y-12">
+        <div class="border-gray-900/10 pb-12">
+          <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-6">
+            <div class="sm:col-span-2">
+              <label
+                for="tipo_mascota"
+                class="block text-sm font-medium leading-6 text-gray"
+                >Tipo</label
+              >
+              <div class="mt-2">
+                <select
+                  formControlName="tipo_mascota"
+                  id="tipo_mascota"
+                  name="tipo_mascota"
+                  class="form-select block w-full rounded-md border-0 py-1.5 text-gray ring-1 ring-inset ring-gray sm:max-w-xs sm:text-sm sm:leading-6"
+                >
+                  <option>Canino</option>
+                  <option>Felino</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="sm:col-span-4">
+              <label
+                for="first-name"
+                class="block text-sm font-medium leading-6 text-gray"
+                >Nombre</label
+              >
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="nombre"
+                  id="nombre"
+                  formControlName="nombre"
+                  class="form-control block w-full rounded-md border-0 py-1.5 text-gray ring-1 ring-inset ring-gray sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div class="sm:col-span-2">
+              <label
+                for="edad"
+                class="block text-sm font-medium leading-6 text-gray"
+                >Edad</label
+              >
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="edad"
+                  id="edad"
+                  formControlName="edad"
+                  class="form-control block w-full rounded-md border-0 py-1.5 text-gray ring-1 ring-inset ring-gray sm:max-w-xs sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div class="sm:col-span-4">
+              <label
+                for="raza"
+                class="block text-sm font-medium leading-6 text-gray"
+                >Raza</label
+              >
+              <div class="mt-2">
+                <input
+                  id="raza"
+                  name="raza"
+                  type="raza"
+                  formControlName="raza"
+                  class="form-control block w-full rounded-md border-0 py-1.5 text-gray ring-1 ring-inset ring-gray sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div class="sm:col-span-2">
+              <label
+                for="peso"
+                class="block text-sm font-medium leading-6 text-gray"
+                >Peso</label
+              >
+              <div class="mt-2">
+                <input
+                  id="peso"
+                  name="peso"
+                  type="number"
+                  formControlName="peso"
+                  class="form-control block w-full rounded-md border-0 py-1.5 text-gray ring-1 ring-inset ring-gray sm:max-w-xs sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div class="sm:col-span-2">
+              <label
+                for="tamano"
+                class="block text-sm font-medium leading-6 text-gray"
+                >Tamaño</label
+              >
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="tamano"
+                  id="tamano"
+                  formControlName="tamano"
+                  class="form-control block w-full rounded-md border-0 py-1.5 text-gray ring-1 ring-inset ring-gray sm:max-w-xs sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div class="sm:col-span-2">
+              <label
+                for="sexo"
+                class="block text-sm font-medium leading-6 text-gray"
+                >Sexo</label
+              >
+              <div class="mt-2">
+                <select
+                  id="sexo"
+                  name="sexo"
+                  formControlName="sexo"
+                  class="form-select block w-full rounded-md border-0 py-1.5 text-gray ring-1 ring-inset ring-gray sm:max-w-xs sm:text-sm sm:leading-6"
+                >
+                  <option>Masculino</option>
+                  <option>Femenino</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="sm:col-span-2">
+              <label
+                for="esterilizado"
+                class="block text-sm font-medium leading-6 text-gray"
+                >Esterilizado</label
+              >
+              <div class="mt-2">
+                <select
+                  formControlName="esterilizado"
+                  id="esterilizado"
+                  name="esterilizado"
+                  class="form-select block w-full rounded-md border-0 py-1.5 text-gray ring-1 ring-inset ring-gray sm:max-w-xs sm:text-sm sm:leading-6"
+                >
+                  <option>Si</option>
+                  <option>No</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="sm:col-span-4">
+              <label
+                for="photo"
+                class="block text-sm font-medium leading-6 text-gray"
+                >Imagen</label
+              >
+              <div class="mt-2 flex items-center gap-x-3">
+                <svg
+                  class="h-12 w-12 text-gray"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                <input
+                  type="text"
+                  name="foto_mascota"
+                  id="foto_mascota"
+                  formControlName="foto_mascota"
+                  class="form-control block w-full rounded-md border-0 py-1.5 text-gray ring-1 ring-inset ring-gray sm:max-w-xs sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div class="col-span-full">
+              <label
+                for="descripcion_mascota"
+                class="block text-sm font-medium leading-6 text-gray"
+                >Descripcion de tu mascota</label
+              >
+              <div class="mt-2">
+                <textarea
+                  id="descripcion_mascota"
+                  name="descripcion_mascota"
+                  rows="3"
+                  formControlName="descripcion_mascota"
+                  class="form-control block w-full rounded-md border-0 py-1.5 text-gray ring-1 ring-inset ring-gray placeholder:text-gray sm:text-sm sm:leading-6"
+                ></textarea>
+              </div>
+              <p class="mt-3 text-sm leading-6 text-gray">
+                Describe las caracteristicas y comportamientos de tu mascota.
+              </p>
+            </div>
+
+            <div class="col-span-full">
+              <label
+                for="info_cuidado"
+                class="block text-sm font-medium leading-6 text-gray"
+                >Información de sus cuidados</label
+              >
+              <div class="mt-2">
+                <textarea
+                  id="info_cuidado"
+                  formControlName="info_cuidado"
+                  rows="3"
+                  class="form-control block w-full rounded-md border-0 py-1.5 text-gray ring-1 ring-inset ring-gray placeholder:text-gray sm:text-sm sm:leading-6"
+                ></textarea>
+              </div>
+              <p class="mt-3 text-sm leading-6 text-gray">
+                Si tu mascota padece de alguna condición, cuentanos...
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          style="display: flex; width: 100%; justify-content: center"
+          class="mt-6 flex items-center justify-end gap-x-6"
+        >
+          <button
+            style="width: 50%; font-size: 16px"
+            type="submit"
+            class="rounded-md bg-nav px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo"
+            [disabled]="!petProfileForm.valid"
+          >
+            Actualizar Mascota
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
