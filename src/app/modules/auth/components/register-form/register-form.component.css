@@ -6,6 +6,9 @@
   align-items: center;
   gap: 20px;
   padding: 0 8em;
+  .logo-mobile {
+    display: none;
+  }
   .text-login {
     width: 50%;
     .image-container {
@@ -137,6 +140,35 @@
         color: #747474;
         font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
           "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      }
+    }
+  }
+}
+
+/* Form */
+@media screen and (min-width: 320px) and (max-width: 640px) {
+  .main-container {
+    display: grid;
+    padding: 10px;
+    justify-items: center;
+    margin-top: 5px;
+    .logo-mobile {
+      display: grid;
+      width: 160px;
+      img {
+        place-self: center;
+      }
+    }
+    .text-login {
+      display: none;
+    }
+    .container-right {
+      place-self: center;
+      width: 100%;
+      .form-container {
+        margin-top: 5px;
+        width: 360px;
+        height: 720px;
       }
     }
   }

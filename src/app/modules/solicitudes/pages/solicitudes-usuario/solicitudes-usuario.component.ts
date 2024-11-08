@@ -41,4 +41,8 @@ export class SolicitudesUsuarioComponent {
   hasSolicitudes(): boolean {
     return this.solicitudes.length > 0; // Verificamos si hay solicitudes
   }
+
+  goToHome() {
+    this.router.navigate(['/app/home']);
+  }
 }

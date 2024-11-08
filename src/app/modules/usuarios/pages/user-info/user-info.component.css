@@ -1,0 +1,8 @@
+@media screen and (min-width: 320px) and (max-width: 640px) {
+  .form {
+    .space-margin {
+      margin-top: -30px;
+      margin-bottom: 20px;
+    }
+  }
+}

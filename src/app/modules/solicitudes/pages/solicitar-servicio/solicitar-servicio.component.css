@@ -1,0 +1,59 @@
+.container {
+  height: 80vh;
+  margin-top: 50px;
+  padding: 0 100px;
+  h2 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    button {
+      border-radius: 30px;
+      padding: 10px;
+      width: 50%;
+      margin: auto;
+      cursor: pointer;
+      background-color: #008080;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      &:hover {
+        color: #000;
+        transition: 0.5s;
+        background-color: #d1c4c4;
+        border: 3px #008080 solid;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 640px) {
+  .container {
+    padding: 0 30px;
+    .button-arrow {
+      position: relative;
+      left: -15px;
+      top: -15px;
+    }
+
+    form {
+      width: 100%;
+      padding: 20px;
+      box-shadow: 10px 5px 5px rgb(206, 201, 201);
+      h2 {
+        font-size: 26px;
+        margin-bottom: 10px;
+      }
+      button {
+        width: 100%;
+        font-size: 16px;
+        font-weight: 400;
+      }
+    }
+  }
+}

@@ -66,4 +66,8 @@ export class SolicitarServicioComponent implements OnInit {
       });
     }
   }
+
+  goToPrestadores() {
+    this.router.navigate(['/app/filtro-prestadores']);
+  }
 }

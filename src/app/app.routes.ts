@@ -2,7 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginFormComponent } from './modules/auth/components/login-form/login-form.component';
 import { LayoutComponent } from './modules/shared/components/layout/layout.component';
-import { HomeComponent } from './modules/home/components/home/home.component';
+import { HomeComponent } from './modules/home/pages/home/home.component';
 import { ListComponent } from './modules/usuarios/pages/list/list.component';
 import { RegisterFormComponent } from './modules/auth/components/register-form/register-form.component';
 import { authGuard } from './modules/custom/auth.guard';
@@ -11,7 +11,7 @@ import { UserProfileComponent } from './modules/usuarios/pages/user-info/user-in
 import { PetsTableComponent } from './modules/mascotas/components/pets-table/pets-table.component';
 import { PetRegisterComponent } from './modules/mascotas/pages/pet-register/pet-register.component';
 import { PetEditComponent } from './modules/mascotas/pages/pet-edit/pet-edit.component';
-import { Component } from '@angular/core';
+
 import { LayoutPetsComponent } from './modules/mascotas/pages/layout-pets/layout-pets.component';
 import { FiltroPrestadoresComponent } from './modules/usuarios/pages/filtro-prestadores/filtro-prestadores.component';
 import { SolicitarServicioComponent } from './modules/solicitudes/pages/solicitar-servicio/solicitar-servicio.component';

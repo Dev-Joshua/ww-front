@@ -68,4 +68,8 @@ export class FiltroPrestadoresComponent {
 
     this.router.navigate([`/app/solicitar-servicio`, prestadorId, servicioId]);
   }
+
+  goToHome() {
+    this.router.navigate(['/app/home']);
+  }
 }

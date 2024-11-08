@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, inject, HostListener } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import {
   faBell,
   faInfoCircle,
@@ -18,7 +18,13 @@ import { Notificacion } from '../../models/notificacion.model';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule, OverlayModule, FormsModule],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    OverlayModule,
+    FormsModule,
+    RouterModule,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
@@ -27,6 +33,23 @@ export class HeaderComponent {
   private router = inject(Router);
   // private notificacionService = inject(NotificacionService);
 
+  constructor() {
+    this.updateNavDisplay();
+    this.showMenuDisplay();
+  }
+
+  // Método para actualizar la visualización del menú según el ancho de pantalla
+  updateNavDisplay() {
+    this.activeMenu = this.screenWidth > 640;
+  }
+
+  showMenuDisplay() {
+    this.listMenu = this.screenWidth > 640;
+  }
+
+  listMenu = false;
+  activeMenu = false;
+  screenWidth: number = window.innerWidth;
   faBell = faBell;
   faInfoCircle = faInfoCircle;
   faClose = faClose;
@@ -54,5 +77,12 @@ export class HeaderComponent {
 
   goToSolicitudes() {
     this.router.navigate(['/app/solicitudes']);
+  }
+
+  // Listener para detectar cambios en el tamaño de la pantalla
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.screenWidth = event.target.innerWidth;
+    this.updateNavDisplay();
   }
 }

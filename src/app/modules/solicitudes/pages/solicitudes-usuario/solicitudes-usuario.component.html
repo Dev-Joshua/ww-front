@@ -1,4 +1,28 @@
-<div class="w-full h-full grow bg-white-600 p-6">
+<div class="w-full h-full grow bg-white-600 p-2">
+  <div class="mt-10 mb-20">
+    <button
+      (click)="goToHome()"
+      class="button block text-sm text-text absolute top-30 right-auto"
+    >
+      <svg
+        class="w-6 h-8 text-gray-800 dark:text-white"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 12h14M5 12l4-4m-4 4 4 4"
+        />
+      </svg>
+    </button>
+  </div>
   <div class="container mx-auto" *ngIf="hasSolicitudes(); else loading">
     <table
       class="w-full text-sm text-left text-gray"
@@ -73,6 +97,8 @@
     </table>
   </div>
   <ng-template #loading>
-    <p>Cargando solicitudes...</p>
+    <div class="py-10">
+      <p class="text-lg font-semibold">Cargando solicitudes...</p>
+    </div>
   </ng-template>
 </div>

@@ -1,21 +1,31 @@
 <ng-container *ngIf="usuario$ | async as usuario">
   <nav class="navbar navbar-expand-lg">
     <div class="navbar-logo">
-      <a href="#"><img src="/assets/images/logoWW2.png" alt="logo-icon" /></a>
+      <a routerLink="/app/home"
+        ><img src="/assets/images/logoWW2.png" alt="logo-icon"
+      /></a>
     </div>
 
     <div class="container-sections">
       <div class="nav-list">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul
+          class="flex flex-row items-center navbar-nav me-auto mb-2 mb-lg-0"
+          *ngIf="activeMenu || screenWidth > 640"
+        >
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" routerLink="/app/home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Servicios</a>
+            <a
+              class="nav-link disabled"
+              routerLink="/app/servicios"
+              aria-disabled="true"
+              >Servicios</a
+            >
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">Nosotros</a>
+            <a class="nav-link" routerLink="/app/nosotros">Nosotros</a>
           </li>
         </ul>
 
@@ -29,7 +39,7 @@
             </button> -->
           </div>
           <div class="profile">
-            <p>{{ usuario?.email }}</p>
+            <p *ngIf="activeMenu || screenWidth > 640">{{ usuario?.email }}</p>
             <button
               type="button"
               class="flex rounded-full"
@@ -64,7 +74,7 @@
         <span class="block text-normal text-text">Account</span>
         <button
           (click)="isOpen = !isOpen"
-          class="block text-sm text-text absolute right-3 top-3"
+          class="block text-sm text-text absolute right-2 top-3"
         >
           <fa-icon [icon]="faClose"></fa-icon>
         </button>
@@ -77,10 +87,39 @@
           alt=""
         />
         <div class="space-y-1">
-          <div class="text-text">{{ usuario?.nombre }}</div>
+          <div class="text-text" *ngIf="activeMenu || screenWidth > 640">
+            {{ usuario?.nombre }}
+          </div>
           <div class="text-sm text-gray">{{ usuario?.email }}</div>
         </div>
       </div>
+      <ul class="py-1" *ngIf="listMenu || screenWidth < 640">
+        <li>
+          <a
+            routerLink="/app/home"
+            style="cursor: pointer"
+            class="block py-2 px-4 text-sm text-text hover:bg-gray-100 dark:hover:bg-gray-600"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/app/servicios"
+            class="block py-2 px-4 text-sm text-text hover:bg-gray-100 dark:hover:bg-gray-600"
+            aria-disabled="true"
+            >Servicios</a
+          >
+        </li>
+
+        <li>
+          <a
+            routerLink="/app/nosotros"
+            style="cursor: pointer"
+            class="block py-2 px-4 text-sm text-text hover:bg-gray-100 dark:hover:bg-gray-600"
+            >Nosotros</a
+          >
+        </li>
+      </ul>
       <ul class="py-1">
         <li>
           <a
@@ -108,8 +147,9 @@
         </li>
         <li>
           <a
+            routerLink="/app/filtro-prestadores"
             class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
-            >Settings</a
+            >Buscar match</a
           >
         </li>
       </ul>

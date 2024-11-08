@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 
 import { HeaderComponent } from '../header/header.component';
 import { AuthService } from '../../services/auth.service';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [HeaderComponent, CommonModule, RouterModule],
+  imports: [HeaderComponent, CommonModule, RouterModule, FooterComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
 })

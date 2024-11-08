@@ -1,21 +1,47 @@
 <section>
   <!-- filtro-prestadores.component.html -->
-  <div class="container flex justify-center my-4">
-    <form class="w-96" (submit)="buscarPrestadores()">
-      <div class="form-group">
+  <div class="container-form flex flex-col items-center my-4">
+    <button
+      (click)="goToHome()"
+      class="button-arrow button block text-sm text-text"
+    >
+      <svg
+        class="w-6 h-8 text-gray-800 dark:text-white"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 12h14M5 12l4-4m-4 4 4 4"
+        />
+      </svg>
+    </button>
+    <form class="w-96 mt-8" (submit)="buscarPrestadores()">
+      <h2 class="text-3xl text-center font-bold">Buscar Match</h2>
+      <div class="form-group mt-3">
         <label for="ciudad">Ciudad</label>
         <input
           type="text"
           [(ngModel)]="ciudad"
           name="ciudad"
-          class="form-control"
+          class="form-control rounded-lg"
           placeholder="Buscar por ciudad"
         />
       </div>
-      <div class="form-group">
+      <div class="form-group mt-3">
         <label for="servicio">Servicio</label>
-        <select [(ngModel)]="servicioId" name="servicio" class="form-control">
-          <option value="">Seleccionar Servicio</option>
+        <select
+          [(ngModel)]="servicioId"
+          name="servicio"
+          class="form-control rounded-lg border-gray-500"
+        >
           <option
             *ngFor="let servicio of servicios"
             [value]="servicio.id_servicio"
@@ -24,19 +50,19 @@
           </option>
         </select>
       </div>
-      <div class="form-group">
+      <div class="form-group mt-3">
         <label for="nombre">Nombre</label>
         <input
           type="text"
           [(ngModel)]="nombre"
           name="nombre"
-          class="form-control"
+          class="form-control rounded-lg"
           placeholder="Buscar por nombre"
         />
       </div>
-      <div style="display: flex; justify-content: center">
+      <div style="display: flex; width: 100%">
         <button
-          class="my-3 w-80 items-center px-4 py-2 text-sm font-medium text-center text-white bg-nav rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="my-8 w-full items-center py-2 text-base font-medium text-center text-white bg-nav rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           type="submit"
         >
           Buscar
@@ -47,16 +73,16 @@
   <!-- Resultados de la búsqueda -->
 
   <div class="container">
-    <h3>Resultados de la búsqueda</h3>
+    <h3 class="font-semibold text-lg">Resultados de la búsqueda:</h3>
     <div
-      class="grid grid-cols-4 ml-14 mr-14 gap-8 mt-16"
+      class="cards-container grid grid-cols-4 ml-14 mr-14 gap-8 mt-16"
       *ngIf="prestadores.length > 0"
     >
       <div
         *ngFor="let prestador of prestadores"
-        class="w-full pt-4 pb-0 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray"
+        class="container-card w-full pt-4 pb-0 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray"
       >
-        <div class="flex flex-col items-center pb-10">
+        <div class="container-info flex flex-col items-center pb-10">
           <img
             class="w-24 h-24 mb-3 rounded-full shadow-lg"
             [src]="prestador.foto_usuario"
@@ -98,7 +124,7 @@
               prestador.rol
             }}</span>
           </div>
-          <div class="flex mt-4 md:mt-6">
+          <div class="container-button flex mt-4 md:mt-6">
             <button
               (click)="solicitarServicio(prestador.id_usuario, servicioId)"
               class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-nav rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

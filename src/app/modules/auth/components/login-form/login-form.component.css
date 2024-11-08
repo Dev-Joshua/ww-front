@@ -143,12 +143,13 @@
     }
   }
 }
-/* Form */
+
 @media screen and (min-width: 320px) and (max-width: 640px) {
   .main-container {
     display: grid;
     padding: 10px;
     justify-items: center;
+    margin-top: 5px;
     .logo-mobile {
       display: grid;
       width: 160px;

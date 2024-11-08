@@ -1,0 +1,28 @@
+.container {
+  margin: 0;
+  table {
+    tr {
+      th {
+        padding: 0px;
+      }
+      td {
+        padding: 0px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 640px) {
+  .container {
+    table {
+      tr {
+        th {
+          padding: 0px;
+        }
+        td {
+          padding: 10px;
+        }
+      }
+    }
+  }
+}

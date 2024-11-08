@@ -10,8 +10,9 @@ import { MascotaService } from '../../../shared/services/mascota.service';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Route } from '@angular/router';
+import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-pet-edit',
@@ -26,9 +27,11 @@ import { Route } from '@angular/router';
   styleUrl: './pet-edit.component.css',
 })
 export class PetEditComponent implements OnInit {
+  router = inject(Router);
   petProfileForm: FormGroup;
   pet: Mascota | null = null;
   petId: number | null = null;
+  faClose = faClose;
 
   public disabled = true;
 
@@ -115,5 +118,9 @@ export class PetEditComponent implements OnInit {
         },
       });
     }
+  }
+
+  goToHome() {
+    this.router.navigate(['/app/mascotas']);
   }
 }

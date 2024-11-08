@@ -1,1 +1,13 @@
-
+@media screen and (min-width: 320px) and (max-width: 740px) {
+  .container {
+    h2 {
+      font-size: 26px;
+      text-align: center;
+      font-weight: 500;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
