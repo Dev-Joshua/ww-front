@@ -29,6 +29,7 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 })
 export class UserProfileComponent implements OnInit {
   private router = inject(Router);
+  showModal = false;
   userProfileForm: FormGroup;
   user: Usuario | null = null;
   faClose = faClose;
@@ -109,6 +110,7 @@ export class UserProfileComponent implements OnInit {
       this.userService.updateUserProfile(updateUser).subscribe({
         next: (response) => {
           console.log('Perfil actualizado con exito', response);
+          this.showModal = true;
         },
         error: (err) => {
           console.error('Error al actualizar ', err);
@@ -118,6 +120,16 @@ export class UserProfileComponent implements OnInit {
   }
 
   goToHome() {
+    this.router.navigate(['/app/home']);
+  }
+
+  closeModal() {
+    this.showModal = false;
+    this.router.navigate(['/app/home']);
+  }
+
+  navigateToHome() {
+    this.showModal = false;
     this.router.navigate(['/app/home']);
   }
 }

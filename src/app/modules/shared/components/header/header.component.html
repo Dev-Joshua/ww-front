@@ -10,7 +10,7 @@
       <div class="nav-list">
         <ul
           class="flex flex-row items-center navbar-nav me-auto mb-2 mb-lg-0"
-          *ngIf="activeMenu || screenWidth > 640"
+          *ngIf="activeMenu && screenWidth >= 640"
         >
           <li class="nav-item">
             <a class="nav-link" routerLink="/app/home">Home</a>
@@ -71,7 +71,7 @@
       class="z-50 my-4 w-60 text-base list-none bg-white rounded divide-y divide-div shadow"
     >
       <div class="py-2 px-4 text-center relative">
-        <span class="block text-normal text-text">Account</span>
+        <span class="block text-normal text-text font-semibold">Account</span>
         <button
           (click)="isOpen = !isOpen"
           class="block text-sm text-text absolute right-2 top-3"
@@ -93,33 +93,35 @@
           <div class="text-sm text-gray">{{ usuario?.email }}</div>
         </div>
       </div>
-      <ul class="py-1" *ngIf="listMenu || screenWidth < 640">
-        <li>
-          <a
-            routerLink="/app/home"
-            style="cursor: pointer"
-            class="block py-2 px-4 text-sm text-text hover:bg-gray-100 dark:hover:bg-gray-600"
-            >Home</a
-          >
-        </li>
-        <li>
-          <a
-            routerLink="/app/servicios"
-            class="block py-2 px-4 text-sm text-text hover:bg-gray-100 dark:hover:bg-gray-600"
-            aria-disabled="true"
-            >Servicios</a
-          >
-        </li>
+      <div class="py-1" *ngIf="listMenu && screenWidth < 640">
+        <ul>
+          <li>
+            <a
+              routerLink="/app/home"
+              style="cursor: pointer"
+              class="block py-2 px-4 text-sm text-text hover:bg-gray-100 dark:hover:bg-gray-600"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/app/servicios"
+              class="block py-2 px-4 text-sm text-text hover:bg-gray-100 dark:hover:bg-gray-600"
+              aria-disabled="true"
+              >Servicios</a
+            >
+          </li>
 
-        <li>
-          <a
-            routerLink="/app/nosotros"
-            style="cursor: pointer"
-            class="block py-2 px-4 text-sm text-text hover:bg-gray-100 dark:hover:bg-gray-600"
-            >Nosotros</a
-          >
-        </li>
-      </ul>
+          <li>
+            <a
+              routerLink="/app/nosotros"
+              style="cursor: pointer"
+              class="block py-2 px-4 text-sm text-text hover:bg-gray-100 dark:hover:bg-gray-600"
+              >Nosotros</a
+            >
+          </li>
+        </ul>
+      </div>
       <ul class="py-1">
         <li>
           <a
@@ -157,12 +159,45 @@
         <li>
           <button
             class="block py-2 px-4 text-sm text-gray-700"
+            (click)="confirmarEliminarCuenta()"
+          >
+            Eliminar Cuenta
+          </button>
+        </li>
+        <li>
+          <button
+            class="block py-2 px-4 text-sm text-gray-700"
             (click)="logout()"
           >
-            Log out
+            Cerrar sesión
           </button>
         </li>
       </ul>
+
+      <!-- Modal de Confirmación de Eliminación -->
+      <div
+        *ngIf="mostrarModalEliminarCuenta"
+        class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50"
+      >
+        <div class="bg-white p-6 rounded shadow-lg text-center">
+          <h3 class="text-lg font-bold mb-4">
+            ¿Estás seguro de que deseas eliminar tu cuenta?
+          </h3>
+          <p class="text-gray-600 mb-6">Esta acción no se puede deshacer.</p>
+          <button
+            (click)="deleteAccount()"
+            class="bg-red-500 text-white px-4 py-2 rounded mr-2"
+          >
+            Eliminar
+          </button>
+          <button
+            (click)="cancelarEliminarCuenta()"
+            class="bg-gray-300 px-4 py-2 rounded"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
     </div>
   </ng-template>
 </ng-container>

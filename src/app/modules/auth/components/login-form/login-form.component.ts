@@ -37,6 +37,8 @@ export class LoginFormComponent {
     email: ['', [Validators.required, Validators.email]],
     contrasena: ['', [Validators.required, Validators.minLength(5)]],
   });
+  showModalError = false;
+  showModal = false;
   showPassword = false;
   status: RequestStatus = 'init';
   faPen = faPen;
@@ -55,12 +57,12 @@ export class LoginFormComponent {
         next: (data) => {
           this.status = 'success';
           if (data.token) {
-            // localStorage.setItem('token', data.token);
-            this.router.navigate(['/app/home']);
+            this.showModal = true;
           }
         },
         error: () => {
           this.status = 'failed';
+          this.showModalError = true;
         },
       });
     }
@@ -68,5 +70,19 @@ export class LoginFormComponent {
 
   registrarse() {
     this.router.navigate(['register']);
+  }
+
+  closeModal() {
+    this.showModal = false;
+    this.router.navigate(['/app/home']);
+  }
+
+  navigateToHome() {
+    this.showModal = false;
+    this.router.navigate(['/app/home']);
+  }
+
+  closeErrorModal() {
+    this.showModalError = false;
   }
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
@@ -23,7 +23,7 @@ export class UsuarioService {
     );
   }
 
-  //Obtener el perfil del usuario
+  // Obtener el perfil del usuario
   getUserProfile(): Observable<Usuario> {
     return this.http.get<Usuario>(`${this.apiUrl}/api/v1/wwdemo/perfil`);
   }
@@ -40,5 +40,12 @@ export class UsuarioService {
     return this.http.get<any[]>(`${this.apiUrl}/usuarios/prestadores/filtrar`, {
       params: { q: query },
     });
+  }
+
+  // Eliminar el perfil del usuario
+  deleteUserAccount(userId: number): Observable<void> {
+    return this.http.delete<void>(
+      `${this.apiUrl}/api/v1/wwdemo/usuarios/${userId}`
+    );
   }
 }

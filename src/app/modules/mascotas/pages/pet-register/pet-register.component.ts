@@ -47,6 +47,7 @@ export class PetRegisterComponent implements OnInit {
   });
   faClose = faClose;
   isOpen = false;
+  showModal = false;
 
   ngOnInit(): void {}
 
@@ -67,7 +68,7 @@ export class PetRegisterComponent implements OnInit {
       this.mascotaService.registerPet(userId, newPet).subscribe({
         next: (response) => {
           console.log('Mascota registrada con éxito:', response);
-          this.router.navigate(['/pets']); // Cambia esto según tu ruta
+          this.showModal = true;
         },
         error: (err) => {
           console.error('Error al registrar la mascota', err);
@@ -79,6 +80,11 @@ export class PetRegisterComponent implements OnInit {
   }
 
   goToHome() {
+    this.router.navigate(['/app/mascotas']);
+  }
+
+  closeModal() {
+    this.showModal = false;
     this.router.navigate(['/app/mascotas']);
   }
 }

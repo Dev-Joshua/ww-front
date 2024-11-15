@@ -43,6 +43,7 @@ export class RegisterFormComponent {
     contrasena: ['', [Validators.required, Validators.minLength(5)]],
     rol: ['', Validators.required],
   });
+  showModal = false;
   showPassword = false;
   status: RequestStatus = 'init';
   faPen = faPen;
@@ -70,7 +71,7 @@ export class RegisterFormComponent {
         next: (data) => {
           this.status = 'success';
           if (data.token) {
-            this.router.navigate(['/app/home']);
+            this.showModal = true;
           }
         },
         error: () => {
@@ -82,5 +83,15 @@ export class RegisterFormComponent {
 
   login() {
     this.router.navigate(['login']);
+  }
+
+  closeModal() {
+    this.showModal = false;
+    this.router.navigate(['/app/home']); // Navegar a la página de inicio
+  }
+
+  navigateToHome() {
+    this.showModal = false;
+    this.router.navigate(['/app/home']); // Navegar a la página de inicio
   }
 }

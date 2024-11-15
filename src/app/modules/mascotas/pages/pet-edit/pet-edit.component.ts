@@ -32,6 +32,7 @@ export class PetEditComponent implements OnInit {
   pet: Mascota | null = null;
   petId: number | null = null;
   faClose = faClose;
+  showModal = false;
 
   public disabled = true;
 
@@ -112,6 +113,7 @@ export class PetEditComponent implements OnInit {
       this.petService.updatePetProfile(updatePet).subscribe({
         next: (response) => {
           console.log('Perfil actualizado con exito', response);
+          this.showModal = true;
         },
         error: (err) => {
           console.error('Error al actualizar ', err);
@@ -122,5 +124,10 @@ export class PetEditComponent implements OnInit {
 
   goToHome() {
     this.router.navigate(['/app/mascotas']);
+  }
+
+  closeModal() {
+    this.showModal = false;
+    this.router.navigate(['/app/home']); // Navegar a la página de inicio
   }
 }

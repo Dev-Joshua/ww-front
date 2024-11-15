@@ -6,12 +6,16 @@
     justify-items: center;
     height: 80vh;
     .item {
+      .hidden {
+        opacity: 0;
+      }
       img {
         width: 100%;
         height: auto;
         max-width: 100%; /* Ajusta las imágenes para no exceder el contenedor */
         object-fit: cover;
         opacity: 0.6;
+        transition: opacity 0.5s ease-in-out;
       }
     }
   }
@@ -70,7 +74,23 @@
       height: 50vh;
     }
     .card-body {
-      display: none;
+      width: 100%;
+      bottom: 15em;
+      .card-title {
+        font-size: 15px;
+      }
+      p {
+        display: none;
+      }
+      div {
+        width: 100%;
+        .btn {
+          display: block;
+          width: 50%;
+          font-size: 15px;
+          padding: 5px;
+        }
+      }
     }
   }
 }

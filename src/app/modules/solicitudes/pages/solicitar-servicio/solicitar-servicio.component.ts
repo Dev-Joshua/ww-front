@@ -21,6 +21,7 @@ export class SolicitarServicioComponent implements OnInit {
   prestadorId: number | null = null;
   servicioId: number | null = null;
   mascotas: any[] = [];
+  showModal = false;
 
   constructor(
     private solicitudService: SolicitudService,
@@ -62,12 +63,21 @@ export class SolicitarServicioComponent implements OnInit {
 
       this.solicitudService.createSolicitud(formData).subscribe((response) => {
         console.log('Solicitud creada:', response);
-        // this.router.navigate(['/mis-solicitudes']); // Redirigir a otra página después de crear la solicitud
+        this.showModal = true;
       });
     }
   }
 
   goToPrestadores() {
     this.router.navigate(['/app/filtro-prestadores']);
+  }
+
+  goToHome() {
+    this.router.navigate(['/app/mascotas']);
+  }
+
+  closeModal() {
+    this.showModal = false;
+    this.router.navigate(['/app/home']);
   }
 }

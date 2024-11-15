@@ -20,7 +20,7 @@ export class PetsTableComponent implements OnInit {
   private mascotaService = inject(MascotaService);
   dataSource = new GenericDataSource<Mascota>();
   router = inject(Router);
-
+  showModal = false;
   mascota: Mascota | null = null;
 
   columns: String[] = [
@@ -61,8 +61,28 @@ export class PetsTableComponent implements OnInit {
   }
 
   deleteMascota(id: number) {
-    // Implementa aquí la lógica para eliminar la mascota
-    console.log(`Eliminando mascota con ID: ${id}`);
-    // Aquí puedes hacer la llamada a tu servicio para eliminar la mascota
+    this.mascotaService.deletePet(id).subscribe(
+      () => {
+        console.log(`Mascota con ID: ${id} eliminada correctamente.`);
+        this.showModal = true;
+        // Filtrar la mascota eliminada del dataSource para actualizar la tabla
+        const updatedPets = this.dataSource.data.value.filter(
+          (mascota) => mascota.id_mascota !== id
+        );
+        this.dataSource.data.next(updatedPets);
+      },
+      (error) => {
+        console.error('Error al eliminar la mascota', error);
+      }
+    );
+  }
+
+  closeModal() {
+    this.showModal = false;
+    this.router.navigate(['/app/mascotas']);
+  }
+  goToHome() {
+    this.showModal = false;
+    this.router.navigate(['/app/mascotas']);
   }
 }

@@ -20,10 +20,12 @@ export class TokenService {
 
   removeToken() {
     removeCookie('token-ww');
+    localStorage.removeItem('token-ww');
   }
 
   removeRefreshToken() {
     removeCookie('refresh-token-ww');
+    localStorage.removeItem('token-ww');
   }
 
   saveRefreshToken(token: string) {
