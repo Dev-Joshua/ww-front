@@ -24,8 +24,9 @@
   <div class="container-right">
     <div class="form-container">
       <p class="title">Iniciar Sesión</p>
-      <p>Inicia sesión y accede a nuestros servicios</p>
+
       <form [formGroup]="formLogin" class="form">
+        <p class="p-form">Inicia sesión y accede a nuestros servicios</p>
         <div>
           <div class="relative">
             <input
@@ -233,13 +234,15 @@
             </div>
           </div>
         </div>
+        <p class="sign-up-label">¿No tienes una cuenta aun?</p>
+        <button class="form-btn">
+          <a>
+            <span class="sign-up-link" (click)="registrarse()">
+              Registrate</span
+            >
+          </a>
+        </button>
       </form>
-      <p class="sign-up-label">
-        ¿No tienes una cuenta aun?
-        <a>
-          <span class="sign-up-link" (click)="registrarse()"> Registrate</span>
-        </a>
-      </p>
     </div>
   </div>
 </section>
