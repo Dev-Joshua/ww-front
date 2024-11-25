@@ -177,7 +177,7 @@
 }
 
 /* Form */
-@media screen and (min-width: 320px) and (max-width: 640px) {
+@media screen and (max-width: 980px) {
   .main-container {
     display: grid;
     padding: 10px;
@@ -199,7 +199,7 @@
       .form-container {
         margin-top: 5px;
         width: 360px;
-        height: 720px;
+        height: auto;
       }
     }
   }

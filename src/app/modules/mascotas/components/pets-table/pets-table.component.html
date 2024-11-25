@@ -1,186 +1,188 @@
 <div class="w-full h-full grow bg-white-600 p-6">
-  <div class="container mx-auto">
-    <table
-      class="w-full text-sm text-left text-gray"
-      cdk-table
-      [dataSource]="dataSource"
-    >
-      <tr
-        cdk-header-row
-        class="text-xs text-gray-700 uppercase bg-gray-50"
-        *cdkHeaderRowDef="columns"
-      ></tr>
-      <tr
-        cdk-row
-        class="bg-white border-b"
-        [ngClass]="{ 'bg-red-200': row.price < 100 }"
-        q
-        *cdkRowDef="let row; columns: columns"
-      ></tr>
+  <div class="px3 py-4 flex justify-center">
+    <div class="overflow-auto mx-auto">
+      <table
+        class="min-w-full text-md bg-white shadow-md rounded mb-4"
+        cdk-table
+        [dataSource]="dataSource"
+      >
+        <tr
+          cdk-header-row
+          class="text-xs text-gray-700 uppercase bg-gray-50"
+          *cdkHeaderRowDef="columns"
+        ></tr>
+        <tr
+          cdk-row
+          class="bg-white border-b"
+          [ngClass]="{ 'bg-red-200': row.price < 100 }"
+          q
+          *cdkRowDef="let row; columns: columns"
+        ></tr>
 
-      <!-- Id Column -->
-      <ng-container cdkColumnDef="id_mascota">
-        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>#Id</th>
-        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
-          {{ row.id_mascota }}
-        </td>
-      </ng-container>
+        <!-- Id Column -->
+        <ng-container cdkColumnDef="id_mascota">
+          <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>#Id</th>
+          <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+            {{ row.id_mascota }}
+          </td>
+        </ng-container>
 
-      <!-- Avatar Column -->
-      <ng-container cdkColumnDef="foto_mascota">
-        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Avatar</th>
-        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
-          <img
-            style="object-fit: cover"
-            class="w-14 h-14 rounded-full"
-            [src]="row.foto_mascota"
-            alt="avatar"
-          />
-        </td>
-      </ng-container>
+        <!-- Avatar Column -->
+        <ng-container cdkColumnDef="foto_mascota">
+          <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Avatar</th>
+          <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+            <img
+              style="object-fit: cover"
+              class="w-14 h-14 rounded-full"
+              [src]="row.foto_mascota"
+              alt="avatar"
+            />
+          </td>
+        </ng-container>
 
-      <!-- Name Column -->
-      <ng-container cdkColumnDef="tipo_mascota">
-        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Tipo</th>
-        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
-          {{ row.tipo_mascota }}
-        </td>
-      </ng-container>
+        <!-- Name Column -->
+        <ng-container cdkColumnDef="tipo_mascota">
+          <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Tipo</th>
+          <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+            {{ row.tipo_mascota }}
+          </td>
+        </ng-container>
 
-      <!-- Email Column -->
-      <ng-container cdkColumnDef="nombre">
-        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Nombre</th>
-        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
-          {{ row.nombre }}
-        </td>
-      </ng-container>
+        <!-- Email Column -->
+        <ng-container cdkColumnDef="nombre">
+          <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Nombre</th>
+          <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+            {{ row.nombre }}
+          </td>
+        </ng-container>
 
-      <ng-container cdkColumnDef="edad">
-        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Edad</th>
-        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
-          {{ row.edad }}
-        </td>
-      </ng-container>
+        <ng-container cdkColumnDef="edad">
+          <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Edad</th>
+          <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+            {{ row.edad }}
+          </td>
+        </ng-container>
 
-      <ng-container cdkColumnDef="raza">
-        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Raza</th>
-        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
-          {{ row.raza }}
-        </td>
-      </ng-container>
+        <ng-container cdkColumnDef="raza">
+          <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Raza</th>
+          <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+            {{ row.raza }}
+          </td>
+        </ng-container>
 
-      <ng-container cdkColumnDef="peso">
-        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Peso</th>
-        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
-          {{ row.peso }}
-        </td>
-      </ng-container>
+        <ng-container cdkColumnDef="peso">
+          <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Peso</th>
+          <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+            {{ row.peso }}
+          </td>
+        </ng-container>
 
-      <ng-container cdkColumnDef="tamano">
-        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Tamaño</th>
-        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
-          {{ row.tamano }}
-        </td>
-      </ng-container>
+        <ng-container cdkColumnDef="tamano">
+          <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Tamaño</th>
+          <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+            {{ row.tamano }}
+          </td>
+        </ng-container>
 
-      <ng-container cdkColumnDef="sexo">
-        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Sexo</th>
-        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
-          {{ row.sexo }}
-        </td>
-      </ng-container>
+        <ng-container cdkColumnDef="sexo">
+          <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Sexo</th>
+          <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+            {{ row.sexo }}
+          </td>
+        </ng-container>
 
-      <ng-container cdkColumnDef="esterilizado">
-        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>
-          Esterilizado
-        </th>
-        <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
-          {{ row.esterilizado }}
-        </td>
-      </ng-container>
+        <ng-container cdkColumnDef="esterilizado">
+          <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>
+            Esterilizado
+          </th>
+          <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+            {{ row.esterilizado }}
+          </td>
+        </ng-container>
 
-      <ng-container cdkColumnDef="actions">
-        <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Acciones</th>
-        <td
-          cdk-cell
-          class="py-4 px-6"
-          *cdkCellDef="let row"
-          style="white-space: nowrap"
-        >
-          <a
-            style="margin: 0 10px"
-            class="btn btn-primary btn-sm"
-            (click)="editMascota(row.id_mascota)"
-            >Editar</a
+        <ng-container cdkColumnDef="actions">
+          <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Acciones</th>
+          <td
+            cdk-cell
+            class="py-4 px-6"
+            *cdkCellDef="let row"
+            style="white-space: nowrap"
           >
-          <a
-            class="btn btn-danger btn-sm"
-            (click)="confirmDelete(row.id_mascota)"
-            >Eliminar</a
+            <a
+              style="margin: 0 10px"
+              class="btn btn-outline-success"
+              (click)="editMascota(row.id_mascota)"
+              >Editar</a
+            >
+            <a
+              class="btn btn-outline-danger"
+              (click)="confirmDelete(row.id_mascota)"
+              >Eliminar</a
+            >
+          </td>
+        </ng-container>
+      </table>
+      <!-- Modal eliminar mascota con exito -->
+      <div
+        *ngIf="showModal"
+        id="popup-modal"
+        tabindex="-1"
+        class="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-50"
+      >
+        <div class="relative p-4 w-full max-w-md max-h-full">
+          <div
+            class="relative bg-white rounded-lg shadow dark:bg-gray-700 w-full"
           >
-        </td>
-      </ng-container>
-    </table>
-    <!-- Modal eliminar mascota con exito -->
-    <div
-      *ngIf="showModal"
-      id="popup-modal"
-      tabindex="-1"
-      class="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-50"
-    >
-      <div class="relative p-4 w-full max-w-md max-h-full">
-        <div
-          class="relative bg-white rounded-lg shadow dark:bg-gray-700 w-full"
-        >
-          <button
-            type="button"
-            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-            (click)="closeModal()"
-          >
-            <svg
-              class="w-3 h-3"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 14"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M1 1l6 6m0 0l6 6M7 7l6-6M7 7l-6 6"
-              />
-            </svg>
-            <span class="sr-only">Cerrar modal</span>
-          </button>
-          <div class="p-4 md:p-5 text-center w-full">
-            <svg
-              class="mx-auto mb-4 text-red-500 w-12 h-12 dark:text-gray-200"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 2c-.791 0-1.55.314-2.11.874l-.893.893a.985.985 0 0 1-.696.288H7.04A2.984 2.984 0 0 0 4.055 7.04v1.262a.986.986 0 0 1-.288.696l-.893.893a2.984 2.984 0 0 0 0 4.22l.893.893a.985.985 0 0 1 .288.696v1.262a2.984 2.984 0 0 0 2.984 2.984h1.262c.261 0 .512.104.696.288l.893.893a2.984 2.984 0 0 0 4.22 0l.893-.893a.985.985 0 0 1 .696-.288h1.262a2.984 2.984 0 0 0 2.984-2.984V15.7c0-.261.104-.512.288-.696l.893-.893a2.984 2.984 0 0 0 0-4.22l-.893-.893a.985.985 0 0 1-.288-.696V7.04a2.984 2.984 0 0 0-2.984-2.984h-1.262a.985.985 0 0 1-.696-.288l-.893-.893A2.984 2.984 0 0 0 12 2Zm3.683 7.73a1 1 0 1 0-1.414-1.413l-4.253 4.253-1.277-1.277a1 1 0 0 0-1.415 1.414l1.985 1.984a1 1 0 0 0 1.414 0l4.96-4.96Z"
-              />
-            </svg>
-
-            <h3
-              class="mb-5 font-normal text-gray-500 dark:text-gray-400 text-2xl"
-            >
-              Tu mascota fue eliminada correctamente
-            </h3>
             <button
               type="button"
-              class="text-white bg-nav hover:bg-opacity-80 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
-              (click)="goToHome()"
+              class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              (click)="closeModal()"
             >
-              Continuar
+              <svg
+                class="w-3 h-3"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 14"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M1 1l6 6m0 0l6 6M7 7l6-6M7 7l-6 6"
+                />
+              </svg>
+              <span class="sr-only">Cerrar modal</span>
             </button>
+            <div class="p-4 md:p-5 text-center w-full">
+              <svg
+                class="mx-auto mb-4 text-red-500 w-12 h-12 dark:text-gray-200"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 2c-.791 0-1.55.314-2.11.874l-.893.893a.985.985 0 0 1-.696.288H7.04A2.984 2.984 0 0 0 4.055 7.04v1.262a.986.986 0 0 1-.288.696l-.893.893a2.984 2.984 0 0 0 0 4.22l.893.893a.985.985 0 0 1 .288.696v1.262a2.984 2.984 0 0 0 2.984 2.984h1.262c.261 0 .512.104.696.288l.893.893a2.984 2.984 0 0 0 4.22 0l.893-.893a.985.985 0 0 1 .696-.288h1.262a2.984 2.984 0 0 0 2.984-2.984V15.7c0-.261.104-.512.288-.696l.893-.893a2.984 2.984 0 0 0 0-4.22l-.893-.893a.985.985 0 0 1-.288-.696V7.04a2.984 2.984 0 0 0-2.984-2.984h-1.262a.985.985 0 0 1-.696-.288l-.893-.893A2.984 2.984 0 0 0 12 2Zm3.683 7.73a1 1 0 1 0-1.414-1.413l-4.253 4.253-1.277-1.277a1 1 0 0 0-1.415 1.414l1.985 1.984a1 1 0 0 0 1.414 0l4.96-4.96Z"
+                />
+              </svg>
+
+              <h3
+                class="mb-5 font-normal text-gray-500 dark:text-gray-400 text-2xl"
+              >
+                Tu mascota fue eliminada correctamente
+              </h3>
+              <button
+                type="button"
+                class="text-white bg-nav hover:bg-opacity-80 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
+                (click)="goToHome()"
+              >
+                Continuar
+              </button>
+            </div>
           </div>
         </div>
       </div>

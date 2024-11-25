@@ -20,9 +20,9 @@ import { SolicitudService } from '../../../shared/services/solicitud.service';
   styles: [
     `
       .custom-button {
-        width: 30%;
+        width: 45%;
         margin: 0 10px;
-        padding: 5px;
+        padding: 8px 12px;
         font-weight: 500;
         font-size: 12px;
         cursor: pointer;

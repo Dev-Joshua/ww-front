@@ -60,6 +60,7 @@
           color: #000;
           transition: 0.5s;
           background-color: #fff;
+          opacity: 0.9;
           border: 3px #008080 solid;
         }
       }
