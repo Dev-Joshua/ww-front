@@ -92,7 +92,7 @@
   }
 }
 
-@media screen and (min-width: 320px) and (max-width: 640px) {
+@media screen and (max-width: 980px) {
   .info-section {
     margin-top: 20px;
 

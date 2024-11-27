@@ -30,7 +30,7 @@
         <!-- Avatar Column -->
         <ng-container cdkColumnDef="foto_mascota">
           <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Avatar</th>
-          <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          <td cdk-cell class="md:py-4 md:px-6" *cdkCellDef="let row">
             <img
               style="object-fit: cover"
               class="w-14 h-14 rounded-full"
@@ -58,7 +58,7 @@
 
         <ng-container cdkColumnDef="edad">
           <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Edad</th>
-          <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+          <td cdk-cell class="py-4 md:px-6" *cdkCellDef="let row">
             {{ row.edad }}
           </td>
         </ng-container>

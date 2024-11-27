@@ -2,14 +2,13 @@
 <section class="services-section">
   <h2>Servicios que cumplen con las necesidades de tus mascotas</h2>
   <div class="container-cards">
-    <article>
+    <article *ngIf="service1">
       <div>
         <img src="../assets/images/dog-walk.jpg" alt="perro-caminando" />
       </div>
-
-      <div class="gap-2">
-        <h4>Caminata Perruna</h4>
-        <p>Tu peludito sale a pasear por tu vecindario</p>
+      <div class="gap-4">
+        <h4>{{ service1.nombre_servicio }}</h4>
+        <p class="w-80 h-32 text-justify">{{ service1.descripcion }}</p>
         <a routerLink="/app/filtro-prestadores"
           ><button
             type="submit"
@@ -30,13 +29,13 @@
         </a>
       </div>
     </article>
-    <article>
+    <article *ngIf="service2">
       <div>
         <img src="../assets/images/perro-paseo2.jpg" alt="" />
       </div>
-      <div class="gap-2">
-        <h4>Guardería</h4>
-        <p>Para perros y gatos</p>
+      <div class="gap-4">
+        <h4>{{ service2.nombre_servicio }}</h4>
+        <p class="w-80 h-32 text-justify">{{ service2.descripcion }}</p>
         <a routerLink="/app/filtro-prestadores"
           ><button
             type="submit"
@@ -57,13 +56,13 @@
         </a>
       </div>
     </article>
-    <article>
+    <article *ngIf="service3">
       <div>
         <img src="../assets/images/perro-training2.jpg" alt="" />
       </div>
-      <div class="gap-2">
-        <h4>Entrenamiento canino</h4>
-        <p>Sesiones de entrenamiento privadas para tu amigo perruno</p>
+      <div class="gap-4">
+        <h4>{{ service3.nombre_servicio }}</h4>
+        <p class="w-80 h-32 text-justify">{{ service3.descripcion }}</p>
         <a routerLink="/app/filtro-prestadores"
           ><button
             type="submit"

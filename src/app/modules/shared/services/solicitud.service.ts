@@ -56,18 +56,4 @@ export class SolicitudService {
       { headers: { 'Content-Type': 'text/plain' } }
     );
   }
-
-  // Cambiar el estado de una solicitud
-  // cambiarEstadoSolicitud(
-  //   solicitudId: number,
-  //   nuevoEstado: string
-  // ): Observable<any> {
-  //   return this.http.patch(
-  //     `${this.apiUrl}/api/v1/wwdemo/solicitudes/${solicitudId}/estado`,
-  //     null,
-  //     {
-  //       params: { estado: nuevoEstado },
-  //     }
-  //   );
-  // }
 }

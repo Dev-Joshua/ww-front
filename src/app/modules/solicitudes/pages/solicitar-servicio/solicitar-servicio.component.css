@@ -32,7 +32,7 @@
   }
 }
 
-@media screen and (min-width: 320px) and (max-width: 640px) {
+@media screen and (max-width: 980px) {
   .container {
     padding: 0 30px;
     .button-arrow {
@@ -44,7 +44,7 @@
     form {
       width: 100%;
       padding: 20px;
-      box-shadow: 10px 5px 5px rgb(206, 201, 201);
+
       h2 {
         font-size: 26px;
         margin-bottom: 10px;
@@ -54,6 +54,14 @@
         font-size: 16px;
         font-weight: 400;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .container {
+    div {
+      border-radius: 25px;
     }
   }
 }
